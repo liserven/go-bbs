@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页 --我的博客</title>
+    <link rel="stylesheet" type="text/css" href="/static/hplus/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/toastr.js/latest/css/toastr.css">
+
+</head>
+
+<body>
+
+    <div class="container" style="padding:50px">
+        <a class="btn btn-default" href="/topic_add">添加 </a>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>顺序</th>
+
+                    <th>id</th>
+
+                    <th>标题</th>
+
+
+                    <th>111</th>
+                    <th>111</th>
+                    <th>111</th>
+                    <th>111</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range $k, $v:= .list}}
+                <tr>
+                    <td>{{ $k }}</td>
+
+                    <td>{{ $v.id}}</td>
+
+                    <td>{{ $v.title}}</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>
+                        <a href="/topic_edit?id={{$v.id}}" class="btn btn-default btn-sm">修改</a>
+                        <a href="javascript:;" data-id="{{ $v.id }}" class="btn btn-danger btn-sm doDel">删除</a>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.js"></script>
+<script type="text/javascript" src="/static/hplus/js/bootstrap.min.js"></script>
+<script src="/static/hplus/js/plugins/toastr/toastr.min.js"></script>
+<script>
+    $(".doDel").click(function() {
+        var url = "/topic_del";
+        var data = {
+            id: $(this).attr("data-id"),
+        }
+        $.post(url, data, function(result) {
+            if (result.error == 0) {
+                toastr.error(result.msg)
+            } else {
+                toastr.success(result.msg)
+                setTimeout(function() {
+                    window.location.reload()
+                }, 1000)
+            }
+
+        })
+    })
+</script>
+
+</html>

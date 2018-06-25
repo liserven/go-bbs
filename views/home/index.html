@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页 --我的博客</title>
+    <link rel="stylesheet" type="text/css" href="/static/hplus/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+
+            <a href="###" class="navbar-brand">我的博客</a>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="###">首页</a></li>
+                <li class=""><a href="###">文章</a></li>
+                <li class=""><a href="###">分类</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-50">
+        {{ range .list }}
+        <div class="page-header">
+            <a href=" ">
+                <h1>{{ .title }}</h1>
+            </a>
+            <h6 class="text-muted ">文章发布于 2013 4 11 共有100次浏览 200 个评论</h6>
+            <p>{{ .content}}</p>
+        </div>
+        {{end}}
+    </div>
+</body>
+<script type="text/javascript " src="https://cdn.staticfile.org/jquery/3.3.1/jquery.js "></script>
+<script type="text/javascript " src="/static/hplus/js/bootstrap.min.js "></script>
+
+</html>
